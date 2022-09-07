@@ -1,0 +1,28 @@
+
+<div class="clearfix my-4">
+<a class="btn btn-info right" href="{% url 'calendar' %}">
+           ALL
+</a>
+{% for loc in locations %}
+
+   <a class="btn btn-info right" href="{% url 'calendar' %}?location={{ loc.location }}">
+            {{ loc }}
+
+    </a>
+
+{% endfor %}
+</div>
+<div class="clearfix">
+	<a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}{% if city %} &&location={{ city }}{% endif %}"> Previous Month </a>
+
+	<a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}{% if city %} &&location={{ city }}{% endif %}" > Next Month </a>
+
+	<a class="btn btn-info right" href="{% url 'trip_new' %}"> New Event </a>
+
+
+
+    </select>
+</div>
+      <div class="w-100 p-3">
+    {{ calendar }}
+</div>

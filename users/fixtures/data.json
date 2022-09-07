@@ -1,0 +1,88 @@
+[
+    {"model": "users.myuser",
+     "pk": 1,
+     "fields": {
+             "password": "pbkdf2_sha256$260000$9RVrQBF3vnGkWOeo5jckfQ$HThGPFRbKOGvrL6mMn0fQzjw3qHrPd7fP1wDbIttT5k=",
+             "email": "root@root.com",
+             "username": "root",
+             "date_joined": "2022-07-22T18:28:29.406Z",
+             "is_active": true,
+             "is_staff": true,
+              "is_superuser": true }
+    },
+    {"model": "users.myuser",
+         "pk": 2,
+         "fields": {
+                 "password": "pbkdf2_sha256$260000$9RVrQBF3vnGkWOeo5jckfQ$HThGPFRbKOGvrL6mMn0fQzjw3qHrPd7fP1wDbIttT5k=",
+                 "email": "staf@root.com",
+                 "username": "staf",
+                 "date_joined": "2022-07-22T18:28:29.406Z",
+                 "is_active": true,
+                 "is_staff": true
+                  }
+    },
+    {"model": "coin.coin",
+         "pk": 1,
+         "fields": {
+                    "short_title":"SYP",
+                    "long_title":"Syrian pound",
+                    "active":true
+                     }
+    },
+    {"model": "coin.coin",
+         "pk": 2,
+         "fields": {
+                    "short_title":"USD",
+                    "long_title":" United States dollar",
+                    "active":true
+                     }
+    },
+    {"model": "company.company",
+         "pk": 1,
+         "fields": {"name":"ST","create_at":"2022-07-22T18:28:29.406Z",
+         "update_at":"2022-07-22T18:28:29.406Z" }
+    },
+    {"model": "users.profile",
+         "pk": 1,
+         "fields": {"user": 1,
+         "image": "default.jpg",
+          "phoneNumber": null,
+          "create_at": "2022-07-23T04:03:09.193Z",
+          "update_at": "2022-07-23T04:03:47.778Z"}
+        },
+        {"model": "users.profile",
+         "pk": 2,
+         "fields": {"user": 2,
+         "image": "default.jpg",
+         "phoneNumber": null,
+         "create_at": "2022-07-23T04:03:09.240Z",
+         "update_at": "2022-07-23T04:04:48.439Z"}
+        },
+     {"model": "users.myuser",
+      "pk": 3,
+       "fields": {
+       "password": "pbkdf2_sha256$260000$9RVrQBF3vnGkWOeo5jckfQ$HThGPFRbKOGvrL6mMn0fQzjw3qHrPd7fP1wDbIttT5k=",
+        "last_login": null,
+        "email": "man@root.com",
+         "username": "man",
+            "date_joined": "2022-07-22T18:28:29.406Z",
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+             "is_MANAGER": true,
+             "is_RESERVATION": true,
+             "is_ACCOUNTANT": true,
+             "is_CUSTOMER": true,
+             "company": 1
+
+         }
+         },
+        {"model": "users.profile",
+         "pk": 3,
+         "fields": {"user": 3,
+         "image": "default.jpg",
+         "phoneNumber": null,
+         "create_at": "2022-07-23T04:03:09.240Z",
+         "update_at": "2022-07-23T04:04:48.439Z"}
+        }
+]
