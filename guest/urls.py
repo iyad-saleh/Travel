@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  admin,trip,index, searchLocation, searchTrip,home,flight,sea,visa,hotel,document,insurance,about,login,shipping
+from .views import  trip,index, searchLocation, searchTrip,home,flight,sea,visa,hotel,document,insurance,about,login,shipping
 
 urlpatterns = [
     path('transport/', index, name='guest_index'),
@@ -16,5 +16,5 @@ urlpatterns = [
     path('shipping/', shipping, name='shipping'),
     path('about/', about, name='about'),
     path('login/', login, name='login'),
-    path('adminlte/', admin, name='adminlte'),
+    
 ]

@@ -85,6 +85,3 @@ def login(request):
 def about(request):
     return render(request, 'guest/about.html',{'navbar':"about"})
 
-def admin(request):
-    return render(request, 'guest/adminlte/admin_home.html')
-    

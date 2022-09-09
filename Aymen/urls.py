@@ -42,7 +42,7 @@ urlpatterns += i18n_patterns(
          ),
          name='password_reset_complete'),
 
-    # path('htmx/', include('common.urlsHtmx')),
+    path('htmx/', include('common.urlsHtmx')),
     path('', include('blog.urls')),
     path('dashboard/', dashboard, name='dashboard' ),
     path('account/', include('account.urls')),
@@ -53,7 +53,7 @@ urlpatterns += i18n_patterns(
     path('passport/', include('passport.urls')),
     path('trip/', include('trip.urls')),
     path('guest/', include('guest.urls')),
-    path('adminlte/', include('guest.urls')),
+    path('admin/', include('adminlte.urls')),
     prefix_default_language=False,
 
 )
