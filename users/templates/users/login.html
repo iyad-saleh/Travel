@@ -1,15 +1,15 @@
-{% extends 'g_base.html' %}
+{% extends "guest/g_base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="row">
+<div class="row mt-3">
 
 <div class="col-md-6 mx-auto grid-margin stretch-card">
-                <!-- <div class="card">
+                <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">LOGIN </h4>
-                    <p class="card-description">Enter ....</p> -->
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <p class="card-description">Enter ....</p>
+
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -24,12 +24,12 @@
             </div>
         </form>
         <div class="border-top pt-3">
-            <!-- <small class="text-muted">
+            <small class="text-muted">
                 Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </small>
-        </div> -->
+        </div>
     </div>
     </div>
-     </div>
-    </div> 
+    </div>
+    </div>
 {% endblock content %}

@@ -2,11 +2,11 @@ from django.db import models
 from PIL import Image
 from django.conf import settings
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as _
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=500)
+    name = models.CharField(_('name'), max_length=500)
     logo = models.ImageField(default='default.jpg', upload_to='Company_pics', blank=True, null=True)
     address = models.CharField(max_length=500, blank=True, null=True)
     # phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{7,15}$")

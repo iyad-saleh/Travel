@@ -48,8 +48,8 @@ class Account(BaseModel, SoftDeleteModel):
     )
 
 
-    name =models.CharField(max_length=255 )
-    account_type =models.CharField(choices=Accountchoise ,max_length=4, blank=True)
+    name         = models.CharField(max_length=255 )
+    account_type = models.CharField(choices=Accountchoise ,max_length=4, blank=True)
 
     class Meta:
         unique_together = [['name', 'company']]

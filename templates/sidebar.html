@@ -3,8 +3,12 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-      <img src="{% static  'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img
+
+      src="{{ user.company.logo.url }}"
+
+      alt="company Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">{{ user.company }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -12,10 +16,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ user.profile.image.url }}"
+          class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ user }}</a>
         </div>
       </div>
 
@@ -26,82 +31,151 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-close ">
             <a href="#" class="nav-link active">
+
               <i class="nav-icon far fa-id-badge"></i>
               <p>
                 Reservation
+
                 <i class="right fas fa-angle-left "></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-umbrella-beach nav-icon"></i><p>Trip</p></a>
+                <a href="{% url 'customer_index' %}" class="nav-link ">
+
+                  <i class="fas fa-umbrella-beach nav-icon"></i>
+                  <p>Customer</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="" class="nav-link ">
+
+                  <i class="fas fa-ship nav-icon"></i>
+                  <p>Ferry</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-plane nav-icon"></i><p>Flight</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="far fa-address-book nav-icon"></i>
+                  <p>Visa</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-bus-alt nav-icon"></i><p>Transport</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="fas fa-bed nav-icon"></i>
+                  <p>Hotel</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-ship nav-icon"></i><p>Ferry</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="fas fa-luggage-cart nav-icon"></i>
+                  <p>Shipping</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="far fa-address-book nav-icon"></i><p>Visa</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="fas fa-heartbeat nav-icon"></i>
+                  <p>Insurance</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-bed nav-icon"></i><p>Hotel</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="fas fa-atlas nav-icon"></i>
+                  <p>Travel Document</p>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-luggage-cart nav-icon"></i><p>Shipping</p></a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-heartbeat nav-icon"></i><p>Insurance</p></a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-atlas nav-icon"></i><p>Travel Document</p></a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Other</p></a>
+                <a href="" class="nav-link ">
+
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Other</p>
+                </a>
               </li>
             </ul>
               <li class="nav-item menu-close">
                 <a href="#" class="nav-link active">
+
                 <i class="nav-icon fas fa-building"></i>
                 <p>
-                  Company
+                  staff
+
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-umbrella-beach nav-icon"></i><p>Trip</p></a>
+                <a href="{% url 'employee_index' %}" class="nav-link ">
+
+                  <i class="fas fa-plane nav-icon"></i>
+                  <p>employee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'employeeType' %}" class="nav-link ">
+
+                  <i class="fas fa-bus-alt nav-icon"></i>
+                  <p>employeeType</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                  <a href="{% url 'calendar' %}" class="nav-link ">
+
+                    <i class="fas fa-plane nav-icon"></i>
+                    <p>trip</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-plane nav-icon"></i><p>Flight</p></a>
+                  <a href="{% url 'trip_new' %}" class="nav-link ">
+
+                    <i class="fas fa-bus-alt nav-icon"></i>
+                    <p>New trip</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-bus-alt nav-icon"></i><p>Transport</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-ship nav-icon"></i>
+                    <p>Ferry</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-ship nav-icon"></i><p>Ferry</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="far fa-address-book nav-icon"></i>
+                    <p>Visa</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="far fa-address-book nav-icon"></i><p>Visa</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-bed nav-icon"></i>
+                    <p>Hotel</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-bed nav-icon"></i><p>Hotel</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-luggage-cart nav-icon"></i>
+                    <p>Shipping</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-luggage-cart nav-icon"></i><p>Shipping</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-heartbeat nav-icon"></i>
+                    <p>Insurance</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-heartbeat nav-icon"></i><p>Insurance</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-atlas nav-icon"></i>
+                    <p>Travel Document</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-atlas nav-icon"></i><p>Travel Document</p></a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link "><i class="fas fa-users nav-icon"></i><p>Customer</p></a>
+                  <a href="" class="nav-link ">
+
+                    <i class="fas fa-users nav-icon"></i>
+                    <p>Customer</p></a>
                 </li>
               </ul>
 
@@ -109,85 +183,126 @@
 
     <li class="nav-item menu-close">
       <a href="#" class="nav-link active">
+
       <i class="nav-icon fas fa-user"></i>
       <p>
         Staff
+
         <i class="right fas fa-angle-left"></i>
       </p>
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-user-friends nav-icon"></i><p>Employee</p></a>
+        <a href="" class="nav-link ">
+          <i class="fas fa-user-friends nav-icon"></i>
+          <p>Employee</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="far fa-id-card nav-icon"></i><p>Driver</p></a>
+        <a href="" class="nav-link ">
+          <i class="far fa-id-card nav-icon"></i>
+          <p>Driver</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-bus nav-icon"></i><p>Bus</p></a>
+        <a href="" class="nav-link ">
+          <i class="fas fa-bus nav-icon"></i>
+          <p>Bus</p></a>
       </li>
-     
+
     </ul>
 
 
     <!-- Accounting -->
     <li class="nav-item menu-close">
       <a href="#" class="nav-link active">
+
         <i class="nav-icon fas fa-dollar-sign"></i>
         <p>
           Accounting
+
           <i class="right fas fa-angle-left"></i>
         </p>
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-money-check nav-icon"></i><p>Prepaid Expenses</p></a>
+          <a href="{% url 'account_index' %}" class="nav-link ">
+            <i class="fas fa-money-check nav-icon"></i>
+            <p>Account</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-coins nav-icon"></i><p>Collection</p></a>
+          <a href="{% url 'expense_index' %}" class="nav-link ">
+            <i class="fas fa-coins nav-icon"></i>
+            <p>expense</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-hand-holding-usd nav-icon"></i><p>Payment</p></a>
+          <a href="{% url 'box_index' %}" class="nav-link ">
+            <i class="fas fa-hand-holding-usd nav-icon"></i>
+            <p>Boxs</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-wallet nav-icon"></i><p>Salary</p></a>
+          <a href="" class="nav-link ">
+            <i class="fas fa-wallet nav-icon"></i>
+            <p>Salary</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-book nav-icon"></i><p>Jurnal</p></a>
+          <a href="" class="nav-link ">
+            <i class="fas fa-book nav-icon"></i>
+            <p>Jurnal</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-balance-scale nav-icon"></i><p>Trial Balance</p></a>
+          <a href="" class="nav-link ">
+            <i class="fas fa-balance-scale nav-icon"></i>
+            <p>Trial Balance</p></a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link "><i class="fas fa-landmark nav-icon"></i><p>Box's</p></a>
+          <a href="" class="nav-link ">
+            <i class="fas fa-landmark nav-icon"></i>
+            <p>Box's</p></a>
         </li>
       </ul>
   <!-- Setting -->
   <li class="nav-item menu-close">
     <a href="#" class="nav-link active">
+
       <i class="nav-icon fas fa-cogs"></i>
       <p>
         Setting
+
         <i class="right fas fa-angle-left"></i>
       </p>
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-user-tie nav-icon"></i><p>User's</p></a>
+        <a href="{% url 'user_list' %}" class="nav-link ">
+          <i class="fas fa-user-tie nav-icon"></i>
+          <p>User's</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-city nav-icon"></i><p>City's</p></a>
+        <a href="" class="nav-link ">
+          <i class="fas fa-city nav-icon"></i>
+          <p>City's</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="far fa-money-bill-alt nav-icon"></i><p>Curncy</p></a>
+        <a href="" class="nav-link ">
+          <i class="far fa-money-bill-alt nav-icon"></i>
+          <p>Currncy</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-book nav-icon"></i><p>Passport</p></a>
+        <a href="" class="nav-link ">
+          <i class="fas fa-book nav-icon"></i>
+          <p>Passport</p></a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link "><i class="fas fa-qrcode nav-icon"></i><p>Barcode</p></a>
+        <a href="" class="nav-link ">
+          <i class="fas fa-qrcode nav-icon"></i>
+          <p>Barcode</p></a>
       </li>
-     
-     
+      <li class="nav-item">
+        <a href="{% url 'company' %}" class="nav-link ">
+        <i class="fas fa-qrcode nav-icon"></i>
+        <p>Company</p></a>
+      </li>
+
+
     </ul>
 
     <!-- /.sidebar -->

@@ -6,6 +6,12 @@ from django.shortcuts import get_object_or_404
 from datetime import datetime as dt
 
 
+
+def home(request):
+    return render(request, 'guest/home.html',{'navbar':"home"})
+
+
+
 def index(request):
     locations = Location.objects.all()
     return render(request, 'guest/transport.html',{
@@ -14,7 +20,7 @@ def index(request):
 
 def searchLocation(request):
     loc= request.GET.get('fromLoc')
-    print(loc)
+    # print(loc)
     if loc :
 
         locations = Location.objects.exclude(id=loc)
@@ -51,11 +57,10 @@ def searchTrip(request):
 
 
 
-def home(request):
-    return render(request, 'guest/home.html',{'navbar':"home"})
-    
+
 def trip(request):
     return render(request, 'guest/package.html',{'navbar':"trip"})
+
 
 
 def flight(request):
@@ -79,12 +84,5 @@ def document(request):
 def shipping(request):
     return render(request, 'guest/shipping.html',{'navbar':"shipping"})
 
-def login(request):
-    return render(request, 'login.html',{'navbar':"login"})
-
 def about(request):
     return render(request, 'guest/about.html',{'navbar':"about"})
-
-def admin(request):
-    return render(request, 'guest/adminlte/admin_home.html')
-    

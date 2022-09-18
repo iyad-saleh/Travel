@@ -68,8 +68,12 @@
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
+    localStorage.setItem('darkMode', 'true');
+    console.log('localStorage darkMode');
       $('body').addClass('dark-mode')
     } else {
+    localStorage.setItem('darkMode', 'false');
+    console.log('localStorage false');
       $('body').removeClass('dark-mode')
     }
   })
@@ -142,9 +146,13 @@
   $container.append($sidebar_collapsed_container)
 
   $(document).on('collapsed.lte.pushmenu', '[data-widget="pushmenu"]', function () {
+    localStorage.setItem('collapse', 'true');
+    console.log('localStorage true');
     $sidebar_collapsed_checkbox.prop('checked', true)
   })
   $(document).on('shown.lte.pushmenu', '[data-widget="pushmenu"]', function () {
+   localStorage.setItem('collapse', 'false');
+   console.log('localStorage false');
     $sidebar_collapsed_checkbox.prop('checked', false)
   })
 

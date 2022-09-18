@@ -1,8 +1,8 @@
-{% extends 'g_base.html' %}
+{% extends 'guest/g_base.html' %}
 {% load i18n %}
 {% load static %}
 {% block content %}
- 
+
 <div class="container-fluid page-header">
     <div class="container">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
@@ -47,18 +47,18 @@
                         <div class="col-md-3">
                             <div class="mb-3 mb-md-0">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                    <input name="Date" type="date" 
-                                           class="form-control p-4 datetimepicker-input" 
-                                           placeholder="Travel Date" data-target="#date2"   
+                                    <input name="Date" type="date"
+                                           class="form-control p-4 datetimepicker-input"
+                                           placeholder="Travel Date" data-target="#date2"
                                            data-toggle="datetimepicker"
                                            value="{% now 'Y-m-d' %}"/>
                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <input name="PassengerCount" 
-                            required="true" 
-                            type="number" min="1" max="60" class="form-control p-4" 
+                            <input name="PassengerCount"
+                            required="true"
+                            type="number" min="1" max="60" class="form-control p-4"
                             placeholder="Passenger Count" />
                         </div>
                     </div>
@@ -70,13 +70,13 @@
         </div>
     </div>
 </div>
-<!-- Booking End -->       
+<!-- Booking End -->
 
 
-       
+
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
- 
- 
+
+
 
 {% endblock content %}

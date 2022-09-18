@@ -64,6 +64,7 @@ def add_employee(request):
             employee.account=account
 
             employee.save()
+
             cats =form.cleaned_data['category']
             for cat in cats:
                 employee.category.add(cat)
@@ -108,6 +109,7 @@ def edit_employee(request, pk):
             employee.account=account
 
             employee.save()
+            employee.category.clear()
             cats =form.cleaned_data['category']
             for cat in cats:
                 employee.category.add(cat)

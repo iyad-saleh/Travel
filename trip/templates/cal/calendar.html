@@ -1,28 +1,42 @@
+{% extends 'base.html' %}
 
-<div class="clearfix my-4">
-<a class="btn btn-info right" href="{% url 'calendar' %}">
-           ALL
-</a>
-{% for loc in locations %}
+{% block content %}
 
-   <a class="btn btn-info right" href="{% url 'calendar' %}?location={{ loc.location }}">
+
+<div class="clearfix my-5">
+    <a class="btn btn-info right"
+           href="{% url 'calendar' %}">
+               ALL
+    </a>
+     {% for loc in locations %}
+
+        <a class="btn btn-info right" href="{% url 'calendar' %}?location={{ loc.location }}">
             {{ loc }}
 
-    </a>
+        </a>
 
-{% endfor %}
+    {% endfor %}
 </div>
-<div class="clearfix">
-	<a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}{% if city %} &&location={{ city }}{% endif %}"> Previous Month </a>
+<div class="d-flex   justify-content-between">
 
-	<a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}{% if city %} &&location={{ city }}{% endif %}" > Next Month </a>
+	    <a
+      class="btn btn-info "
+       href="{% url 'calendar' %}?{{ prev_month }}{% if city %} &&location={{ city }}{% endif %}">
+         Previous Month
+      </a>
 
-	<a class="btn btn-info right" href="{% url 'trip_new' %}"> New Event </a>
+	   <a class="btn btn-primary  "
+        href="{% url 'trip_new' %}">
+         New Event </a>
 
+	    <a
+        class="btn btn-info "
+         href="{% url 'calendar' %}?{{ next_month }}{% if city %} &&location={{ city }}{% endif %}" >
+          Next Month </a>
 
-
-    </select>
 </div>
-      <div class="w-100 p-3">
-    {{ calendar }}
-</div>
+  <div class="w-100 h-100 p-3">
+     {{ calendar }}
+  </div>
+
+{% endblock %}

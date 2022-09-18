@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,7 +81,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'django.contrib.sessions.middleware.SessionMiddleware',
+
+
 ]
 
 ROOT_URLCONF = 'Aymen.urls'
@@ -139,13 +142,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGES = (
-    ('en', 'English'),
-    ('fr', 'Français'),
-    ('de', 'Deutsch'),
-    ('ar', 'العربية'),
+    # ('fr', 'Français'),
+    # ('de', 'Deutsch'),
+    ('en', _('English')),
+    ('ar', _('Arabic')),
 )
 LANGUAGE_CODE = 'en-us'
-
+LOCALE_PATHS = (
+    BASE_DIR / 'locale/',
+)
 TIME_ZONE = 'Asia/Damascus'
 
 USE_I18N = True

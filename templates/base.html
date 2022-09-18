@@ -37,7 +37,16 @@
   </div>
   {% include 'sidebar.html' %}
   {% include 'navbar.html' %}
-  {% block content %}{% endblock %}
+ 
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <div class="content-wrapper">
+        {% block content %}   {% endblock %}
+      </div>
+    </div>
+  
+  </body>
+
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2022 <a href="#">AdminLTE.io</a>.</strong>
     All rights reserved.
@@ -88,5 +97,5 @@
 <script src="{% static 'dist/js/demo.js' %}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
-</body>
+
 </html>

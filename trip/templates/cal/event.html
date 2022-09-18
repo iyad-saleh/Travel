@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Trip
-{% endblock %}
 
 {% block content %}
-<div class="clearfix">
-  <a class="btn btn-info left" href="{% url 'calendar' %}"> Calendar </a>
-</div>
+ <div class="container-fluid px-5 my-5">
+      <div class="px-5 my-5 text-center">
+       <div class="clearfix">
+        <a class="btn btn-info left" href="{% url 'calendar' %}"> Calendar </a>
+        </div>
 
 {% if form.errors %}
     {% for field in form %}
@@ -31,4 +30,6 @@ Trip
     <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
   </table>
 </form>
+</div>
+</div>
 {% endblock %}

@@ -1,0 +1,39 @@
+
+{% for customer in customers %}
+<tr id="customer-{{ customer.pk }}" class="customer-row">
+
+    <td>{{ customer.account.name  }}</td>
+    <td><img class="rounded-circle article-img" height="60" width="60"
+        src="{{ customer.logo.url }}">
+
+    </td>
+    <td>
+
+
+{% if  customer.client %}
+<span class="badge rounded-pill bg-primary mp-1"> client
+    </span>
+{% endif %}
+{% if  customer.supplier %}
+<span class="badge rounded-pill bg-primary mp-1"> supplier
+    </span>
+{% endif %}
+    </td>
+    <td>{{ customer.address|truncatechars:7  }}</td>
+    <td>{{ customer.phoneNumber1|truncatechars:7  }}</td>
+    <td>{{ customer.tradeRecord|truncatechars:7  }}</td>
+    <td>{{ customer.email|truncatechars:7  }}</td>
+    <td>{{ customer.webSite|truncatechars:7  }}</td>
+    <td>{{ customer.updated_at|date:"Y-m-d"   }}</td>
+    <td>{{ customer.author  }}</td>
+
+
+  <td>
+    <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_customer' pk=customer.pk %}" hx-target="#dialog">Edit</button>
+  </td>
+</tr>
+{% endfor %}
+
+
+
+

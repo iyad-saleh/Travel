@@ -36,8 +36,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_ACCOUNTANT= models.BooleanField(default=False)
     is_CUSTOMER= models.BooleanField(default=False)
     objects = UserManager()
-    company    = models.ForeignKey(Company, blank=True, null=True, on_delete=models.SET_NULL, related_name='company')
-    customer   = models.ForeignKey(Customer, null=True,blank=True, on_delete=models.SET_NULL, related_name='sub_customer')
+    company    = models.ForeignKey(Company, blank=True, null=True, on_delete=models.SET_NULL)
+    sub_customer   = models.ForeignKey(Customer, null=True,blank=True, on_delete=models.SET_NULL, related_name='sub_customer')
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

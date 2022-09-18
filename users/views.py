@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import MyUser
+
 
 def userList(request):
-    users = User.objects.all().select_related('profile')
+    users = MyUser.objects.all().select_related('profile')
 
 
 def register(request):
@@ -21,21 +23,22 @@ def register(request):
 
 
 @login_required
-def profile(request):
+def profile(request, pk):
+    user = get_object_or_404(MyUser, pk=pk)
     if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
+        u_form = UserUpdateForm(request.POST, instance=user)
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
-                                   instance=request.user.profile)
+                                   instance=user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            messages.success(request, f' account has been updated!')
+            return redirect('company_index')
 
     else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        u_form = UserUpdateForm(instance=user)
+        p_form = ProfileUpdateForm(instance=user.profile)
 
     context = {
         'u_form': u_form,
@@ -43,3 +46,5 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+
