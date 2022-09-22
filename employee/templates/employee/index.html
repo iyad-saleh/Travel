@@ -12,11 +12,12 @@
       <button hx-get="{% url 'add_employee' %}" hx-target="#dialog" class="btn btn-primary mb-3">
         Add a Employee
       </button>
-      <table class="table">
+
+      <div class="card-body">
+       <table id="employee" class="table table-bordered table-striped">
         <thead>
           <tr>
-
-          <th>name</th>
+          <th>name1</th>
           <th>start_date</th>
           <th>category</th>
           <th>salary</th>
@@ -24,7 +25,8 @@
           <th>phone</th>
           <th>memo</th>
           <th>author</th>
-            <th></th>
+          <th>edit</th>
+          
           </tr>
         </thead>
         <tbody
@@ -39,7 +41,7 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
     <!-- </div> -->
 
 {% endblock %}

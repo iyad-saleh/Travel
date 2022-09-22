@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404
+from django.views.generic import ListView
+
 
 from .models import Customer
 from .forms import CustomerForm
@@ -16,10 +18,12 @@ from django.contrib.auth.decorators import user_passes_test
 # is_CUSTOMER
 # @user_passes_test(lambda u: u.is_MANAGER)
 def index(request):
+    company = request.user.company
+    customers = Customer.objects.filter(company=company)
     if hasattr( request.user  ,'is_MANAGER' ) :
         accountForm = AccountForm()
         form = CustomerForm()
-        return render(request, 'customer/index.html',{'form': form,'accountForm':accountForm})
+        return render(request, 'customer/index.html',{'form': form,'accountForm':accountForm,'customers':customers})
     return HttpResponse(
         status=403,
         headers={
