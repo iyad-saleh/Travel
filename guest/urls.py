@@ -18,5 +18,4 @@ urlpatterns = [
     path('document/', document, name='document'),
     path('shipping/', shipping, name='shipping'),
     path('about/', about, name='about'),
-
 ]

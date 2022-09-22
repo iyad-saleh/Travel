@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'ked',
     'guest',
     'package',
+    'adminlte',
      # General use templates & template tags (should appear first)
     # 'adminlte3',
      # Optional: Django admin theme (must be before django.contrib.admin)
