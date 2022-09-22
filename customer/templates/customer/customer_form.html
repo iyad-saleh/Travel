@@ -81,11 +81,14 @@
 
 
   </div>
-  <!-- {% crispy accountForm %}
-  {% crispy form %} -->
+
   <div class="modal-footer">
     {% if customer %}
-    <button type="button" class="btn btn-danger" hx-confirm="Are you sure you wish to delete {{ customer.account.name }}?" hx-post="{% url 'remove_customer' pk=customer.pk %}">Remove</button>
+    <button type="button" class="btn btn-danger"
+             hx-confirm="Are you sure you wish to delete {{ customer.account.name }}?"
+             hx-post="{% url 'remove_customer' pk=customer.pk %}">
+      Remove
+    </button>
     <span class="flex-grow-1"></span>
     {% endif %}
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -93,5 +96,7 @@
     </button>
     <button type="submit" class="btn btn-primary">Save</button>
   </div>
-</form></div>
+</form>
+
+</div>
 
