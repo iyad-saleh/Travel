@@ -52,7 +52,7 @@
   var $container = $('<div />', {
     class: 'p-3 control-sidebar-content'
   })
-
+console.log("control-sidebar")
   $sidebar.append($container)
 
   // Checkboxes

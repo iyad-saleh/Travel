@@ -8,9 +8,8 @@
   <title>{{ user.company }} / {{ user.username }}</title>
   <link href="{% static '/css/main.css' %}" rel="stylesheet">
 
-  <link href="{% static 'css/all.min.css' %}" rel='stylesheet'>
-  <script src="{% static 'htmx.min.js' %}"></script>
-  <script src="{% static 'alpine.min.js' %}" defer></script>
+  <!-- <link href="{% static 'css/all.min.css' %}" rel='stylesheet'> -->
+
 
 
  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -28,10 +27,15 @@
  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+<!-- iyad script important  -->
+   <script src="{% static 'htmx.min.js' %}"></script>
+  <script src="{% static 'alpine.min.js' %}" defer></script>
+<script src="{% static '_hyperscript.min.js' %}" defer></script>
+
+<!-- end iyad script  -->
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
 </head>
 <body
-sidebar-mini layout-fixed control-sidebar-slide-open
-sidebar-mini layout-fixed control-sidebar-slide-open
  x-data="{darkMode: localStorage.getItem('darkMode') === 'true',
           collapse: localStorage.getItem('collapse') === 'true'
          }"
@@ -54,7 +58,7 @@ class="hold-transition sidebar-mini layout-fixed">
     <!-- <div class="wrapper"> -->
 
 
-          <div class="toast-container position-fixed">
+      <div class="toast-container position-fixed">
       <div id="toast" class="toast align-items-center text-white bg-success border-0  " role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
           <div id="toast-body" class="toast-body"></div>
@@ -62,13 +66,23 @@ class="hold-transition sidebar-mini layout-fixed">
         </div>
       </div>
     </div>
+
+
       <div class="content-wrapper">
+            {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+
         {% block content %}   {% endblock %}
       </div>
     <!-- </div> -->
    <div id="modal" class="modal fade">
           <div id="dialog" class="modal-dialog" hx-target="this">
-
+سك
           </div>
    </div>
   <!-- </body> -->
@@ -80,7 +94,11 @@ class="hold-transition sidebar-mini layout-fixed">
       <b>Version</b> 3.1.0
     </div>
   </footer>
-
+<!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
  </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
@@ -108,9 +126,11 @@ class="hold-transition sidebar-mini layout-fixed">
 <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static 'dist/js/demo.js' %}"></script>
-
+<!-- iyad script important  -->
 <script src="{% static 'dialog.js' %}"></script>
  <script src="{% static 'toast.js' %}"></script>
+
+ <!-- end iyad script -->
 <!-- Page specific script -->
 <script>
   $(function () {
