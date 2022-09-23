@@ -18,3 +18,4 @@ class SoftDeleteManager(models.Manager):
             return self.all_with_deleted().filter(*args, **kwargs)
         return self.get_queryset().filter(*args, **kwargs)
 
+

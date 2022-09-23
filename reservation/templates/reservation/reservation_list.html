@@ -4,8 +4,8 @@
 
 
         <td>{{ reservation.title }}</td>
-        <td>{{ reservation.reservation_type }}</td>
-        <td>{{ reservation.Date }}</td>
+        <td>{{ reservation.get_reservation_type_display }}</td>
+        <td>{{ reservation.Date|date:"Y-m-d"  }}</td>
         <td>{{ reservation.PNR }}</td>
         <td>{{ reservation.trip }}</td>
         <td>{{ reservation.vendor }}</td>
@@ -14,8 +14,8 @@
         <td>{{ reservation.pay_coin }}</td>
         <td>{{ reservation.sell_price }}</td>
         <td>{{ reservation.sell_coin }}</td>
-        <td>{{ reservation.status }}</td>
-        <td>{{ reservation.reservation.author  }}</td>
+        <td>{{ reservation.get_status_display }}</td>
+        <td>{{ reservation.author  }}</td>
   <td>
     <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_reservation' pk=reservation.pk %}" hx-target="#dialog">Edit</button>
   </td>

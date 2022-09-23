@@ -1,4 +1,8 @@
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% block content %}
+
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
  <symbol id="icon-expand" viewBox="0 0 32 32">
     <path fill-rule="evenodd" d="M32 0v12l-4.321-4.321-6.625 6.625-3.359-3.359 6.625-6.625-4.321-4.321zM7.679 4.321l6.625 6.625-3.359 3.359-6.625-6.625-4.321 4.321v-12h12zM27.679 24.321l4.321-4.321v12h-12l4.321-4.321-6.625-6.625 3.359-3.359zM14.304 21.054l-6.625 6.625 4.321 4.321h-12v-12l4.321 4.321 6.625-6.625z"/>
@@ -108,7 +112,7 @@
           <th>sell_coin</th>
           <th>status</th>
           <th>author</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody
@@ -125,20 +129,10 @@
         </tbody>
       </table>
     </div>
-<script >
-
-   $("#MyTable").DataTable({ });
-        // paging :true,
-        // pageLength:10,
-        // lengthChange:true,
-        // autoWidth:true,
-        // searching:true,
-        // bInfo:true,
-        // bSort:true,
 
 
-</script>
 
 
+{% endblock %}
 
 

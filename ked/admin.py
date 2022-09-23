@@ -17,16 +17,16 @@ class KedAdmin(ImportExportModelAdmin):
 class JournalAdmin(ImportExportModelAdmin):
     list_display = ('id',
                 'ked',
-                'account_cridt',
+                'account_credit',
                 # 'sub_account_cridt',
                 'account_dept',
                 # 'sub_account_dept',
                 'ked_date',
                 'dept',
-                'cridt',
+                'credit',
                 'coin',
                 'memo',
                 'company',
                 'created_at',
                 'author',)
-    list_filter = ('ked','account_cridt','account_dept','company','author',)
+    list_filter = ('ked','account_credit','account_dept','company','author',)

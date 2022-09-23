@@ -20,7 +20,52 @@ class Ked(BaseModel, SoftDeleteModel):
 
 
 class Journal(BaseModel, SoftDeleteModel):
-    # NONE= ''
+
+    journal_2    = models.OneToOneField('self', on_delete=models.SET_NULL, blank=True, null=True)
+    ked   = models.ForeignKey(Ked, on_delete=models.CASCADE )
+    account_credit = models.ForeignKey(Account, on_delete=models.CASCADE,related_name='account_credit' )
+    account_dept =  models.ForeignKey(Account, on_delete=models.CASCADE,related_name='account_dept' )
+    ked_date = models.DateTimeField(auto_now_add=True)
+    dept     =models.PositiveIntegerField(default=0)
+    credit    =models.PositiveIntegerField(default=0)
+    coin     = models.ForeignKey(Coin, null=True,blank=True, on_delete=models.SET_NULL )
+    memo     = models.TextField()
+
+    def __str__(self):
+        return self.ked.title
+
+
+@receiver(post_save, sender=Journal)
+def create_Journal(sender, instance, created, **kwargs):
+    if created:
+        if not instance.journal_2 :
+            secondjournal = Journal.objects.create(
+                    journal_2 = instance,
+                    ked             = instance.ked,
+                    account_credit   = instance.account_dept,
+                    # sub_account_credit= instance.sub_account_dept,
+                    account_dept     = instance.account_credit,
+                    # sub_account_dept = instance.sub_account_credit  ,
+                    ked_date         = instance.ked_date   ,
+                    dept             = instance.credit ,
+                    credit            = instance.dept ,
+                    coin             = instance.coin,
+                    memo             = instance.memo,
+                    company= instance.company,
+                    created_at= instance.created_at,
+                    updated_at= instance.updated_at,
+                    author= instance.author,
+                    )
+            instance.journal_2 = secondjournal
+        instance.save()
+
+
+#
+    # account_credit = models.CharField(choices=tuple((k, v) for (k, v, __, __) in ACCOUNT), max_length=4 )
+    # sub_account_credit= models.CharField(choices=tuple((k, v) for (k,  __, __,v) in ACCOUNT), max_length=4, null=True,blank=True )
+    # sub_account_dept= models.CharField(choices=tuple((k, v) for (k,  __, __, v) in ACCOUNT), max_length=4, null=True,blank=True )
+    # account_dept = models.CharField(choices=tuple((k, v) for (k, v, __, __) in ACCOUNT), max_length=4 )
+   # NONE= ''
     # Owner= 'Owner'
     # Customer='Customer'
     # employee='employee'
@@ -60,56 +105,3 @@ class Journal(BaseModel, SoftDeleteModel):
     #     ('27','مصروفات',Assets,Expenses),
     #     ('28','الحافلات',Assets,bus),
         # )
-    journal_2    = models.OneToOneField('self', on_delete=models.SET_NULL, blank=True, null=True)
-    ked   = models.ForeignKey(Ked, on_delete=models.CASCADE )
-
-    account_cridt = models.ForeignKey(Account, on_delete=models.CASCADE,related_name='account_cridt' )
-    # sub_account_cridt = models.ForeignKey(Ked, null=True,blank=True, on_delete=models.SET_NULL, related_name='Sub_Acc_Cridt')
-
-    # sub_account_cridt= models.CharField(choices=tuple((k, v) for (k,  __, __,v) in ACCOUNT), max_length=4, null=True,blank=True )
-
-    account_dept =  models.ForeignKey(Account, on_delete=models.CASCADE,related_name='account_dept' )
-    # sub_account_dept= models.ForeignKey(Ked, null=True,blank=True, on_delete=models.SET_NULL, related_name='Sub_Acc_Dept')
-
-    # sub_account_dept= models.CharField(choices=tuple((k, v) for (k,  __, __, v) in ACCOUNT), max_length=4, null=True,blank=True )
-
-    ked_date = models.DateTimeField(auto_now_add=True)
-    dept     =models.PositiveIntegerField(default=0)
-    cridt    =models.PositiveIntegerField(default=0)
-    coin     = models.ForeignKey(Coin, null=True,blank=True, on_delete=models.SET_NULL )
-    memo     = models.TextField()
-
-    def __str__(self):
-        return self.ked.title
-
-
-@receiver(post_save, sender=Journal)
-def create_Journal(sender, instance, created, **kwargs):
-    if created:
-        if not instance.journal_2 :
-            secondjournal = Journal.objects.create(
-                    journal_2 = instance,
-                    ked             = instance.ked,
-                    account_cridt   = instance.account_dept,
-                    sub_account_cridt= instance.sub_account_dept,
-                    account_dept     = instance.account_cridt,
-                    sub_account_dept = instance.sub_account_cridt  ,
-                    ked_date         = instance.ked_date   ,
-                    dept             = instance.cridt ,
-                    cridt            = instance.dept ,
-                    coin             = instance.coin,
-                    memo             = instance.memo,
-                    company= instance.company,
-                    create_at= instance.create_at,
-                    update_at= instance.update_at,
-                    author= instance.author,
-                    )
-            instance.journal_2 = secondjournal
-        instance.save()
-
-
-#
-    # account_cridt = models.CharField(choices=tuple((k, v) for (k, v, __, __) in ACCOUNT), max_length=4 )
-    # sub_account_cridt= models.CharField(choices=tuple((k, v) for (k,  __, __,v) in ACCOUNT), max_length=4, null=True,blank=True )
-    # sub_account_dept= models.CharField(choices=tuple((k, v) for (k,  __, __, v) in ACCOUNT), max_length=4, null=True,blank=True )
-    # account_dept = models.CharField(choices=tuple((k, v) for (k, v, __, __) in ACCOUNT), max_length=4 )
