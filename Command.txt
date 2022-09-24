@@ -13,8 +13,8 @@ python manage.py makemigrations account blog users company customer box coin pas
 
 winpty python manage.py createsuperuser
 
-manage.py dumpdata myapp > databasedump.json
-manage.py loaddata data.json
+python manage.py dumpdata myapp > databasedump.json
+python manage.py loaddata data.json
 
 
 django-admin makemessages --all

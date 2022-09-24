@@ -9,6 +9,7 @@ from .models import Reservation, SubReservation
 from .forms import ReservationForm , SubReservationForm
 from customer.models import Customer
 from ked.models import Ked, Journal
+from account.models import Account
 # from django.contrib.auth.decorators import user_passes_test
 # is_MANAGER
 # is_RESERVATION
@@ -50,17 +51,44 @@ def add_reservation(request):
             reservation.company=request.user.company
             # print('request.user.company',request.user.company)
             reservation.save()
+            name = reservation.get_reservation_type_display()
+            account_res_type = Account.objects.filter(
+                                                name =name ,
+                                                account_type=reservation.reservation_type,
+                                                company =request.user.company ).first()
+            if not account_res_type:
+                account_res_type = Account.objects.create(
+                                  name =name ,
+                                  account_type=reservation.reservation_type ,
+                                  author= request.user,
+                                  company =request.user.company
+                                  )
+
             title = ''
             if form.cleaned_data['title']:
                 title += form.cleaned_data['title']
             if form.cleaned_data['reservation_type'] :
                title += ' ' + str(form.cleaned_data['reservation_type'])
-            ked = Ked.objects.create(title = title, author= request.user, company =request.user.company )
+            ked = Ked.objects.create(
+                                  title = title,
+                                  author= request.user,
+                                  company =request.user.company )
             journal = Journal.objects.create(
                                     ked = ked ,
                                     account_credit =reservation.vendor.account ,
-                                    account_dept = reservation.customer.account   ,
+                                    account_dept = account_res_type,
                                     dept =   reservation.pay_price ,
+                                    credit = 0  ,
+                                    coin = reservation.pay_coin   ,
+                                    memo = 'no '   ,
+                                    author= request.user,
+                                    company =request.user.company
+                )
+            journal = Journal.objects.create(
+                                    ked = ked ,
+                                    account_credit =account_res_type ,
+                                    account_dept = reservation.customer.account   ,
+                                    dept =   0 ,
                                     credit = reservation.sell_price   ,
                                     coin = reservation.sell_coin   ,
                                     memo = 'no '   ,

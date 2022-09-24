@@ -8,17 +8,16 @@ from passport.models import Passport
 # Create your models here.
 class Reservation(models.Model):
     REVERSATIONTYPE= (
-        ('1', 'طيران'),
-        ('2', 'بري'),
-        ('3', 'بحري'),
-        ('4', 'تكسي'),
-        ('5', 'شحن'),
-        ('6', 'فيزا'),
-        ('7', 'تامين صحي'),
-        ('8', 'سمة دخول'),
-        ('9', 'شهادة صحية)'),
-
-
+            ('1','التأشيرات'),
+            ('2','تذاكرطيران'),
+            ('3','تذاكربرية'),
+            ('4','تذاكربحرية'),
+            ('5','شحن'),
+            ('6','حجزفندقي'),
+            ('7','مستندات سفر'),
+            ('8','عمولات'),
+            ('9','تأمين صحي'),
+            ('10','رحلات'),
         )
     title     = models.CharField(max_length=255,null=True,blank=True)
     reservation_type= models.CharField(choices=REVERSATIONTYPE, max_length=3 )
