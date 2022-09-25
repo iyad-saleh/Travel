@@ -36,7 +36,7 @@ def index(request):
 # @user_passes_test(lambda u: u.is_superuser)
 def reservation_list(request):
     company = request.user.company
-    reservations = Reservation.objects.filter(company=company)
+    reservations = Reservation.objects.filter(company=company).order_by('-id')
     return render(request, 'reservation/reservation_list.html', {
         'reservations':reservations
     })
@@ -80,7 +80,7 @@ def add_reservation(request):
                                     dept =   reservation.pay_price ,
                                     credit = 0  ,
                                     coin = reservation.pay_coin   ,
-                                    memo = 'no '   ,
+                                    memo = 'pay '+name+' from '+str(reservation.vendor.account)   ,
                                     author= request.user,
                                     company =request.user.company
                 )
@@ -91,7 +91,7 @@ def add_reservation(request):
                                     dept =   0 ,
                                     credit = reservation.sell_price   ,
                                     coin = reservation.sell_coin   ,
-                                    memo = 'no '   ,
+                                    memo = 'sell '+name+' to '+str(reservation.customer.account)   ,
                                     author= request.user,
                                     company =request.user.company
                 )
