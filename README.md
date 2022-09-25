@@ -1,21 +1,15 @@
-python manage.py runserver
+this is all command to run application 
 
-python manage.py migrate
+1- python manage.py makemigrations account blog users company customer box coin passport employee bus expense  trip reservation ked
 
-python manage.py makemigrations
+2- python manage.py migrate
 
+3- python manage.py loaddata data.json
 
-python manage.py makemigrations account blog users company customer box coin passport employee bus expense  trip reservation ked
+4- python manage.py runserver
 
-
-
-
-
+/************  extra command ***************/
 winpty python manage.py createsuperuser
-
-manage.py dumpdata myapp > databasedump.json
-manage.py loaddata data.json
-
-
+python manage.py dumpdata myapp > databasedump.json
 django-admin makemessages --all
 django-admin compilemessages
