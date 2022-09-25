@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .forms import KedForm
 from ked.models import Ked, Journal
 from account.models import Account
-
-
+from django.http import HttpResponse
+import json
 
 def index(request):
     if hasattr( request.user  ,'is_MANAGER' ) :
